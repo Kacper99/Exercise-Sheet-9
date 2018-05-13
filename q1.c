@@ -14,12 +14,16 @@ int analyse(int *wholePtr, double *fracPtr, double d) {
 */
 
 int analyse(int *wholePtr, double *fracPtr, double d) {
-    *wholePtr = (int) d;
-    *fracPtr = d - *wholePtr;
+    
 
     if (d < 0) {
+        d += d * -2;
+        *wholePtr = (int) d;
+        *fracPtr = d - *wholePtr;
         return -1;
     } else {
+        *wholePtr = (int) d;
+        *fracPtr = d - *wholePtr;
         return 1;
     }
 }
