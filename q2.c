@@ -18,11 +18,16 @@ TRIARR triNew(int n)
     return array; //Return pointer to the start of array
 }
 
+int offset(int x, int y)
+{
+    return ((y * (y + 1)) / 2) + x;
+}
+
 int triStore(TRIARR as, int N, int row, int col, int val) 
 {
     if (row <= col && row < N && col < N)
     {
-        *(as + row + col) = val;
+        *(as + offset(row, col)) = val;
         return 1;
     }
     else 
@@ -35,7 +40,7 @@ int triFetch(TRIARR as, int N, int row, int col)
 {
     if (row <= col && row < N && col < N) 
     {
-        int val = *(as + row + col);
+        int val = *(as + offset(row, col));
         printf("Value at %i , %i is %i \n", row, col, val);
         return 1;
     }
@@ -47,19 +52,20 @@ int triFetch(TRIARR as, int N, int row, int col)
 
 int main(int argc, char const *argv[])
 {
-    int size = 10;
+    int size = 4;
     TRIARR as = triNew(size);
     for(int i = 0;i < size;i++)
     {
-        for(int j = 0; j < i; j++) 
+        for(int j = 0; j <= i; j++) 
         {
-            triStore(as, size, j, i, i * 2);
+            printf("x: %i, y: %i, v: %i \n", j, i, i*j);
+            triStore(as, size, j, i, i * j);
         }        
     }
 
     for(int i = 0;i < size;i++)
     {
-        for(int j = 0; j < i; j++) 
+        for(int j = 0; j <= i; j++) 
         {
             triFetch(as, size, j, i);
         }        
