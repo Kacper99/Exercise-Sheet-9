@@ -52,7 +52,22 @@ int main(int argc, char const *argv[])
     int size = 6;
     TRIARR as = triNew(6);
 
-    triStore(as, size, 7, 7, 10);
+    for(int i = 0;i < size;i++)
+    {
+        for(int j = 0;j < size;i++)
+        {
+            triStore(as, size, i, j, i*j);    
+        }
+    }
+
+    for(int i = 0;i < size;i++)
+    {
+        for(int j = 0;j < size;i++)
+        {
+            triFetch(as, size, i, j);
+        }
+    }
+
     triFetch(as, size, 7, 7);
     return 0;
 }
