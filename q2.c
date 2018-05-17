@@ -22,10 +22,8 @@ Creates a new triangle of size N
 TRIARR triNew(int N) 
 {
     TRIARR array = (int*) malloc(offset(N, N) * sizeof(int)); //Allocates memory by getting the largest offset and multipying by the size of an int to get the required space
-    if (array == NULL) //If memory failed to be allocated print error message
-    {
-        printf("Failed to allocate memory\n");
-    }
+    if (array == NULL) printf("Failed to allocate memory\n"); //If memory failed to be allocated print error message
+        
     return array; //Return pointer to the start of array
 }
 
@@ -58,7 +56,7 @@ int triFetch(TRIARR as, int N, int row, int col)
 
 int main(int argc, char const *argv[])
 {
-    int size = 10;
+    int size = 5;
     TRIARR as = triNew(size);
     for(int i = 0;i < size;i++)
     {
